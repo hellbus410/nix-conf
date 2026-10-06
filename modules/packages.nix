@@ -19,7 +19,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     users.demiurge = {
-      home.stateVersion = "26.05"; # initial ver
+      home.stateVersion = "26.11"; # initial ver
 
       home.packages = with pkgs; [
         # dotfiles
