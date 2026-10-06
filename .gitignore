@@ -11,3 +11,6 @@ result-*
 # Ignore secrets and passwords
 secrets/
 *.passwd
+
+# Ignore VM disk images build by `nixos-rebuild build-vm` or `nh os build-vm`
+*.qcow2
