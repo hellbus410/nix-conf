@@ -31,7 +31,7 @@
         emoji = [ "OpenMoji Color" ];
       };
     };
-    enableDefaultFonts = true;
+    enableDefaultPackages = true;
   };
 
   # ── Input method: US / RU / JP ──
