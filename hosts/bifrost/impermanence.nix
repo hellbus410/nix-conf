@@ -5,7 +5,7 @@ let
   deviceUnit = "dev-disk-by\\x2dpartlabel-disk\\x2dmain\\x2droot.device"; # systemd-escape -p of the above
 
   # false for the first boot after the reinstall; true once the bind mounts are checked.
-  rollback.enable = false;
+  rollback.enable = true;
 in
 {
   imports = [ inputs.impermanence.nixosModules.impermanence ];

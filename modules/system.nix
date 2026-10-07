@@ -43,7 +43,7 @@
     enable = true;
     openFirewall = true;
     settings = {
-      PasswordAuthentication = true; # TODO: TEMP allow pass until key login is checked
+      PasswordAuthentication = false; 
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
     };
