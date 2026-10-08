@@ -61,4 +61,7 @@
 
   # ── Polkit agent ── (the shell has none; a user unit started with graphical-session.target)
   home-manager.users.demiurge.services.hyprpolkitagent.enable = true;
+
+  # ── Games ──
+  programs.steam.enable = true;
 }

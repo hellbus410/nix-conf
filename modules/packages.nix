@@ -40,11 +40,25 @@
         wl-clipboard
         grim
         slurp
+        btop
+        cliphist
+        pwvucontrol
+        polkit_gnome
 
         # apps
         kitty
+        qutebrowser
         brave-origin
         # TODO: zen browser (not in nixpkgs; community flake)
+        spotify-player
+        protonmail-desktop
+
+        #notes
+        obsidian
+
+        # messanging
+        vesktop
+        telegram-desktop
 
         # AI stuff
         claude-code
@@ -55,7 +69,7 @@
         # TODO: client for RDP
 
         # games
-        # TODO: later
+        protonplus
 
       ];
 
