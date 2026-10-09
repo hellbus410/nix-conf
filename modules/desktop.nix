@@ -59,6 +59,16 @@
   services.power-profiles-daemon.enable = true;
   hardware.i2c.enable = true; # external monitor brightness (ddcutil)
 
+  # ── Theming ── (Caelestia writes ~/.config/qtengine/config.json; these make it resolvable)
+  qt.enable = true; # adds per-user profiles to QT_PLUGIN_PATH so qtengine and darkly load
+  home-manager.users.demiurge.gtk = {
+    enable = true;
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+  };
+
   # ── Polkit agent ── (the shell has none; a user unit started with graphical-session.target)
   home-manager.users.demiurge.services.hyprpolkitagent.enable = true;
 

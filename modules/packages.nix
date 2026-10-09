@@ -44,6 +44,10 @@
         cliphist
         pwvucontrol
         polkit_gnome
+        # icon themes
+        papirus-icon-theme 
+        qtengine
+        darkly
 
         # apps
         kitty
