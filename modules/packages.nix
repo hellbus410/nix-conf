@@ -32,7 +32,7 @@
         eza
         bat
         ripgrep
-        superfile 
+        yazi 
 
         # desktop
         caelestia-shell
