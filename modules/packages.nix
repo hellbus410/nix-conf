@@ -50,7 +50,7 @@
         qutebrowser
         brave-origin
         # TODO: zen browser (not in nixpkgs; community flake)
-        spotify-player
+        spotify
         protonmail-desktop
 
         #notes
