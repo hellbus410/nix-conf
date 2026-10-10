@@ -56,17 +56,14 @@
         # desktop
         caelestia-shell
         caelestia-cli
-        wl-clipboard
-        grim
-        slurp
+        wl-clipboard # wl-paste, run by Caelestia's execs.lua (clipboard history)
+        cliphist # same
+        glib # gsettings, run by Caelestia's execs.lua (GTK cursor theme and size)
         btop
-        cliphist
         pwvucontrol
-        polkit_gnome
         gammastep # night light, started by Caelestia's execs.lua
         trash-cli # trash-empty, run by Caelestia's execs.lua
-        # icon themes
-        papirus-icon-theme 
+        # themes (Papirus comes from gtk.iconTheme in desktop.nix)
         qtengine
         darkly
 
