@@ -34,6 +34,37 @@
         bat
         ripgrep
         yazi 
+        fd
+        fzf # shell keys (Ctrl-R, Ctrl-T) to be hooked up in ~/.zshrc
+        zoxide # `z`, to be hooked up in ~/.zshrc
+        jq
+        yq-go # `yq`, the Go one (jq-like syntax, edits YAML in place)
+        sd # find & replace, simpler than sed
+        entr # rerun a command when files change
+        file
+        tree
+        dysk # disk usage per filesystem (df)
+        tealdeer # `tldr`
+        lsof
+        psmisc # killall, pstree, fuser
+        wget
+        unzip
+        zip
+        _7zz # `7zz`
+        lazyrsync # TUI for rsync
+
+        # git
+        delta # diff pager; set in ~/.config/git/config
+        gh
+
+        # network
+        openssl
+        dnsutils # dig, nslookup
+        nmap
+        whois
+
+        # secrets
+        sops # with age
 
         # neovim: language servers enabled in ~/.config/nvim/init.lua (skipped there when missing)
         nixd
@@ -67,6 +98,12 @@
         qtengine
         darkly
 
+        # media (default apps: ~/.config/mimeapps.list in chezmoi)
+        swayimg # images
+        mpv # video, single audio files
+        rmpc # music: client for mpd (services.mpd below)
+        zathura # pdf, epub, djvu
+
         # apps
         kitty
         qutebrowser
@@ -98,6 +135,18 @@
       programs.direnv = {
         enable = true;
         nix-direnv.enable = true;
+      };
+
+      # music daemon; rmpc is the client. Music dir = XDG_MUSIC_DIR (~/.config/user-dirs.dirs)
+      services.mpd = {
+        enable = true;
+        musicDirectory = "/home/demiurge/music";
+        extraConfig = ''
+          audio_output {
+            type "pipewire"
+            name "PipeWire"
+          }
+        '';
       };
 
       programs.zen-browser = {

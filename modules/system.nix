@@ -77,6 +77,9 @@
   programs.nano.enable = false;
   documentation.man.cache.enable = true;
 
+  # ── Network tools ── (a module, not a package: mtr needs a capability wrapper for raw sockets)
+  programs.mtr.enable = true;
+
   # ── Hardware ──
   security.rtkit.enable = true; # real-time scheduling for PipeWire
   services.pipewire = {
