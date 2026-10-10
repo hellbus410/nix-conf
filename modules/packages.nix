@@ -19,6 +19,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     users.demiurge = {
+      imports = [ inputs.zen-browser.homeModules.beta ];
       home.stateVersion = "26.11"; # initial ver
 
       home.packages = with pkgs; [
@@ -55,7 +56,6 @@
         kitty
         qutebrowser
         brave-origin
-        # TODO: zen browser (not in nixpkgs; community flake)
         spotify
         protonmail-desktop
 
@@ -83,6 +83,15 @@
       programs.direnv = {
         enable = true;
         nix-direnv.enable = true;
+      };
+
+      programs.zen-browser = {
+        enable = true;
+        # Firefox uses its own GTK dialog outside Flatpak; 1 = always ask the portal (yazi)
+        policies.Preferences."widget.use-xdg-desktop-portal.file-picker" = {
+          Value = 1;
+          Status = "locked";
+        };
       };
     };
   };

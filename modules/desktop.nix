@@ -4,7 +4,14 @@
   # ── Hyprland ──
   programs.hyprland.enable = true; # session file, portal, polkit, wrappers
   programs.hyprland.withUWSM = true; # OPEN: uwsm or plain
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ]; # file chooser
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-gtk # everything Hyprland's portal lacks (settings, …)
+    pkgs.xdg-desktop-portal-termfilechooser # file chooser: yazi in kitty; config in chezmoi
+  ];
+  xdg.portal.config.hyprland = {
+    default = [ "hyprland" "gtk" ]; # same as Hyprland's own hyprland-portals.conf
+    "org.freedesktop.impl.portal.FileChooser" = [ "termfilechooser" ];
+  };
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # Electron apps on Wayland
 
   # ── Login: greetd + tuigreet ──
