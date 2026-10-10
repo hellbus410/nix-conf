@@ -59,6 +59,10 @@
   services.power-profiles-daemon.enable = true;
   hardware.i2c.enable = true; # external monitor brightness (ddcutil)
 
+  # ── Services Caelestia's autostart (hypr/hyprland/execs.lua) expects ──
+  services.gnome.gnome-keyring.enable = true; # secrets store for apps (gnome-keyring-daemon)
+  services.geoclue2.enable = true; # location for gammastep; NixOS runs the geoclue agent as a user unit
+
   # ── Theming ── (Caelestia writes ~/.config/qtengine/config.json; these make it resolvable)
   qt.enable = true; # adds per-user profiles to QT_PLUGIN_PATH so qtengine and darkly load
   home-manager.users.demiurge.gtk = {

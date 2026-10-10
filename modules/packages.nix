@@ -44,6 +44,8 @@
         cliphist
         pwvucontrol
         polkit_gnome
+        gammastep # night light, started by Caelestia's execs.lua
+        trash-cli # trash-empty, run by Caelestia's execs.lua
         # icon themes
         papirus-icon-theme 
         qtengine
