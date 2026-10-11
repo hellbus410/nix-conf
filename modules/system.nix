@@ -75,6 +75,8 @@
     VISUAL = "nvim";
     SUDO_EDITOR = "nvim";
   };
+  # The "usual lecture" prints once per user, but its record in /var/db/sudo is wiped every boot
+  security.sudo.extraConfig = "Defaults lecture = never";
   programs.nano.enable = false;
   documentation.man.cache.enable = true;
 
