@@ -35,8 +35,10 @@
         ripgrep
         yazi 
         fd
-        fzf # shell keys (Ctrl-R, Ctrl-T) to be hooked up in ~/.zshrc
-        zoxide # `z`, to be hooked up in ~/.zshrc
+        fzf # shell keys (Ctrl-R, Ctrl-T); hooked up in ~/.zshrc
+        zoxide # `z`; hooked up in ~/.zshrc
+        starship # zsh prompt; ~/.config/starship.toml
+        fastfetch
         jq
         yq-go # `yq`, the Go one (jq-like syntax, edits YAML in place)
         sd # find & replace, simpler than sed
