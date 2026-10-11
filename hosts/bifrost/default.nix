@@ -12,6 +12,13 @@
 
   networking.hostName = "bifrost";
 
+  # NVMe dropped off the PCIe bus (controller is down, CSTS=0xffffffff); no NVMe/PCIe power saving.
+  boot.kernelParams = [
+    "nvme_core.default_ps_max_latency_us=0"
+    "pcie_aspm=off"
+    "pcie_port_pm=off"
+  ];
+
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ]; # selects the driver for Wayland too
   hardware.nvidia = {
