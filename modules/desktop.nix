@@ -24,7 +24,6 @@
   # ── Fonts ──
   fonts = {
     packages = with pkgs; [
-      nerd-fonts.blex-mono
       openmoji-color
       maple-mono.NF
       maple-mono.NF-CN #  fallback for Japanese text
