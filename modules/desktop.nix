@@ -24,17 +24,17 @@
   # ── Fonts ──
   fonts = {
     packages = with pkgs; [
-      nerd-fonts.terminess-ttf
       nerd-fonts.blex-mono
-      ibm-plex
       openmoji-color
       maple-mono.NF
+      maple-mono.NF-CN #  fallback for Japanese text
+      nerd-fonts.caskaydia-cove # fallback for the rest
     ];
     fontconfig = {
       defaultFonts = {
-        sansSerif = [ "IBM Plex Sans" ];
-        serif = [ "IBM Plex Serif" ];
-        monospace = [ "Terminess Nerd Font" ];
+        sansSerif = [ "Maple Mono NF" "Maple Mono NF CN" "CaskaydiaCove Nerd Font" ];
+        serif = [ "Maple Mono NF" "Maple Mono NF CN" "CaskaydiaCove Nerd Font" ];
+        monospace = [ "Maple Mono NF" "Maple Mono NF CN" "CaskaydiaCove Nerd Font" ];
         emoji = [ "OpenMoji Color" ];
       };
     };
