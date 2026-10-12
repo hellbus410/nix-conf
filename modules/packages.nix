@@ -28,6 +28,9 @@
 
         # security
         age
+        
+        # secrets
+        sops # with age
 
         # cli
         eza
@@ -35,14 +38,14 @@
         ripgrep
         yazi 
         fd
-        fzf # shell keys (Ctrl-R, Ctrl-T); hooked up in ~/.zshrc
-        zoxide # `z`; hooked up in ~/.zshrc
-        starship # zsh prompt; ~/.config/starship.toml
+        fzf 
+        zoxide 
+        starship 
         fastfetch
         jq
         yq-go # `yq`, the Go one (jq-like syntax, edits YAML in place)
-        sd # find & replace, simpler than sed
-        entr # rerun a command when files change
+        sd 
+        entr 
         file
         tree
         dysk # disk usage per filesystem (df)
@@ -52,21 +55,20 @@
         wget
         unzip
         zip
-        _7zz # `7zz`
+        _7zz 
         lazyrsync # TUI for rsync
+        pastel # colour picker
 
         # git
         delta # diff pager; set in ~/.config/git/config
         gh
+        ghgrab
 
         # network
         openssl
         dnsutils # dig, nslookup
         nmap
         whois
-
-        # secrets
-        sops # with age
 
         # neovim: language servers enabled in ~/.config/nvim/init.lua (skipped there when missing)
         nixd
@@ -99,22 +101,30 @@
         # themes (Papirus comes from gtk.iconTheme in desktop.nix)
         qtengine
         darkly
+        hyprmod # hyprland GUI config tool
 
         # media (default apps: ~/.config/mimeapps.list in chezmoi)
-        swayimg # images
+        swayimg 
         mpv # video, single audio files
         rmpc # music: client for mpd (services.mpd below)
         zathura # pdf, epub, djvu
+        onlyoffice-desktopeditors # office documents (fonts in desktop.nix)
+
 
         # apps
         kitty
         qutebrowser
         brave-origin
         spotify
+        spotify-player
+        ncspot
         protonmail-desktop
+        zeitgeist # zeit - activity log
+        smassh # monkey type
 
         #notes
         obsidian
+        zennotes-desktop
 
         # messanging
         vesktop

@@ -26,8 +26,18 @@
     packages = with pkgs; [
       openmoji-color
       maple-mono.NF
-      maple-mono.NF-CN #  fallback for Japanese text
+      maple-mono.NF-CN #  fallback for Japanese text (even if it's Chinese)
       nerd-fonts.caskaydia-cove # fallback for the rest
+      # for onlyoffice: fonts .docx/.xlsx/.pptx files ask for, so layouts match Word
+      corefonts # Arial, Times New Roman, Courier New, Verdana, Georgia, Trebuchet MS, Impact 
+      vista-fonts # Calibri, Cambria, Candara, Consolas, Constantia, Corbel
+      paratype-pt-sans # PT Sans/Serif/Mono
+      paratype-pt-serif
+      paratype-pt-mono
+      noto-fonts 
+      roboto 
+      open-sans
+      lato
     ];
     fontconfig = {
       defaultFonts = {
@@ -58,6 +68,12 @@
   programs._1password-gui = {
     enable = true;
     polkitPolicyOwners = [ "demiurge" ];
+  };
+
+  # ── Phone: Valent (KDE Connect protocol) ── (opens TCP/UDP 1714-1764; uwsm runs its xdg autostart)
+  programs.kdeconnect = {
+    enable = true;
+    package = pkgs.valent;
   };
 
   # ── Services the Caelestia shell reads ──
