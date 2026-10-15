@@ -30,6 +30,15 @@
   boot.tmp.useTmpfs = true;
   zramSwap.enable = true;
 
+  # ── Power ──
+  # Never sleep: Hyprland crashes when the monitor drops off and comes back.
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = "no";
+    AllowHibernation = "no";
+    AllowHybridSleep = "no";
+    AllowSuspendThenHibernate = "no";
+  };
+
   # ── Locale ──
   time.timeZone = "Europe/Moscow";
   i18n.defaultLocale = "en_US.UTF-8";
