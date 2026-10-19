@@ -8,6 +8,7 @@
     ../../modules/core.nix
     ../../modules/networkmanager.nix
     ../../modules/audio.nix
+    ../../modules/bluetooth.nix
     ../../modules/games.nix
     ../../modules/desktop.nix
     ../../modules/packages.nix

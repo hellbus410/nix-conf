@@ -82,11 +82,6 @@
   # ── Network tools ── (a module, not a package: mtr needs a capability wrapper for raw sockets)
   programs.mtr.enable = true;
 
-  hardware.bluetooth = {
-    enable = true; # TODO:check the board has it: rfkill list
-    powerOnBoot = true;
-  };
-
   # ── Services ──
   services.btrfs.autoScrub = {
     enable = true;
