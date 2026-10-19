@@ -31,12 +31,6 @@
   boot.tmp.useTmpfs = true;
   zramSwap.enable = true;
 
-  # ntsync module for Endfield Anti-cheat
-  boot.kernelModules = [ "ntsync" ];
-  services.udev.extraRules = ''
-    KERNEL=="ntsync", MODE="0666"
-  '';
-
   # ── Locale ──
   time.timeZone = "Europe/Moscow";
   i18n.defaultLocale = "en_US.UTF-8";
