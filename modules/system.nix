@@ -12,6 +12,7 @@
   };
   nixpkgs.config.allowUnfree = true;
 
+  # ── Nix Helper ──
   programs.nh = {
     enable = true;
     flake = "/home/demiurge/projects/nix-conf"; # where the repo lives on the machine
