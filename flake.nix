@@ -26,18 +26,34 @@
       inputs.nixpkgs.follows = "";
       inputs.home-manager.follows = "";
     };
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    inputs@{ self, nixpkgs, ... }:
-    {
-      nixosConfigurations = {
-        bifrost = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs self; };
-          modules = [ ./hosts/bifrost ];
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" ];
+
+      perSystem =
+        { pkgs, ... }:
+        {
+          formatter = pkgs.nixfmt;
+        };
+
+      flake = {
+        nixosConfigurations = {
+          bifrost = inputs.nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs;
+              inherit (inputs) self;
+            };
+            modules = [ ./hosts/bifrost ];
+          };
         };
       };
-
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
     };
 }
