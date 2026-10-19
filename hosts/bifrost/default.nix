@@ -27,6 +27,14 @@
     options = [ "_netdev" "nofail" "x-systemd.mount-timeout=10s" "nfsvers=4" ];
   };
 
+  # Never sleep: Hyprland crashes when the monitor drops off and comes back.
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = "no";
+    AllowHibernation = "no";
+    AllowHybridSleep = "no";
+    AllowSuspendThenHibernate = "no";
+  };
+
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ]; # selects the driver for Wayland too
   hardware.nvidia = {
