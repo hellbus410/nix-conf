@@ -63,6 +63,8 @@
         delta # diff pager; set in ~/.config/git/config
         gh
         ghgrab
+        gh-dash
+        lazygit
 
         # network
         openssl
