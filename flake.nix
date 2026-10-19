@@ -31,29 +31,17 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+
+    import-tree.url = "github:vic/import-tree";
   };
 
+  # Every .nix file under these folders is a flake-parts module; paths with `/_` are skipped.
+  # The old NixOS modules in modules/*.nix aren't flake-parts modules yet, so only these two
+  # folders are loaded; this becomes ./modules once those are converted.
   outputs =
-    inputs@{ flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" ];
-
-      perSystem =
-        { pkgs, ... }:
-        {
-          formatter = pkgs.nixfmt;
-        };
-
-      flake = {
-        nixosConfigurations = {
-          bifrost = inputs.nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs;
-              inherit (inputs) self;
-            };
-            modules = [ ./hosts/bifrost ];
-          };
-        };
-      };
-    };
+    inputs@{ flake-parts, import-tree, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } (import-tree [
+      ./modules/flake
+      ./modules/hosts
+    ]);
 }
