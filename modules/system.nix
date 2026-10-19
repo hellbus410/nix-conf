@@ -30,6 +30,12 @@
   boot.tmp.useTmpfs = true;
   zramSwap.enable = true;
 
+  # ntsync module for Endfield Anti-cheat
+  boot.kernelModules = [ "ntsync" ];
+  services.udev.extraRules = ''
+    KERNEL=="ntsync", MODE="0666"
+  '';
+
   # ── Power ──
   # Never sleep: Hyprland crashes when the monitor drops off and comes back.
   systemd.sleep.settings.Sleep = {
