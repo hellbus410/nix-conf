@@ -132,7 +132,7 @@
 
         # AI stuff
         claude-code
-        claude-monitor # TODO: try it
+        herdr # TODO: try claude-code using herdr
         
         # remote
         # tailscale TODO: will also need to enable service
