@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
     ./disko.nix
     ./impermanence.nix
-    ../../modules/system.nix
+    ../../modules/core.nix
     ../../modules/desktop.nix
     ../../modules/packages.nix
   ];
