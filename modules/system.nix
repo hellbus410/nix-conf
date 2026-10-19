@@ -14,7 +14,7 @@
 
   programs.nh = {
     enable = true;
-    flake = "/home/demiurge/nix-conf"; # where the repo lives on the machine
+    flake = "/home/demiurge/projects/nix-conf"; # where the repo lives on the machine
     clean = {
       enable = true; # replaces nix.gc
       extraArgs = "--keep-since 14d --keep 10";
