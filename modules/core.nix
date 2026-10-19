@@ -1,4 +1,4 @@
-# Everything system-side that is not the desktop.
+# What every host needs, servers included; the rest are features a host lists.
 { pkgs, ... }:
 {
   # ── Nix ──
@@ -43,7 +43,6 @@
   console.keyMap = "us"; # graphical layouts are Hyprland's and fcitx5's
 
   # ── Network ──
-  networking.networkmanager.enable = true;
   networking.nftables.enable = true;
   networking.firewall.enable = true; # ports are opened by the modules that need them
 
@@ -64,7 +63,6 @@
     description = "demiurge";
     extraGroups = [
       "wheel"
-      "networkmanager"
     ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [

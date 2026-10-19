@@ -6,6 +6,7 @@
     ./disko.nix
     ./impermanence.nix
     ../../modules/core.nix
+    ../../modules/networkmanager.nix
     ../../modules/desktop.nix
     ../../modules/packages.nix
   ];
