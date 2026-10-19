@@ -82,15 +82,6 @@
   # ── Network tools ── (a module, not a package: mtr needs a capability wrapper for raw sockets)
   programs.mtr.enable = true;
 
-  # ── Hardware ──
-  security.rtkit.enable = true; # real-time scheduling for PipeWire
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
   hardware.bluetooth = {
     enable = true; # TODO:check the board has it: rfkill list
     powerOnBoot = true;

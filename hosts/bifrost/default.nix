@@ -7,6 +7,7 @@
     ./impermanence.nix
     ../../modules/core.nix
     ../../modules/networkmanager.nix
+    ../../modules/audio.nix
     ../../modules/games.nix
     ../../modules/desktop.nix
     ../../modules/packages.nix
