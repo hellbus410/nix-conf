@@ -1,6 +1,8 @@
 # What every host needs, servers included; the rest are features a host lists.
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
+  imports = [ inputs.home-manager.nixosModules.home-manager ];
+
   # ── Nix ──
   nix.settings = {
     experimental-features = [
@@ -89,4 +91,21 @@
     fileSystems = [ "/" ];
   };
   services.fwupd.enable = true;
+
+  # ── Packages ── (system: only what root and a rescue session need; the user's come from features)
+  environment.systemPackages = with pkgs; [
+    git
+    neovim
+    tmux
+    curl
+    pciutils # lspci, pcilmr, setpci
+    usbutils # lsusb, lsusb.py, usb-devices, usbhid-dump, usbreset
+  ];
+
+  # ── Home Manager ── (user demiurge, the same on every machine; features add to it)
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.demiurge.home.stateVersion = "26.11"; # initial ver
+  };
 }
