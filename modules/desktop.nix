@@ -1,4 +1,4 @@
-# The graphical session: settings only — its programs are in packages.nix, its config files in chezmoi.
+# The graphical session: settings and programs; its config files are in chezmoi.
 { config, pkgs, ... }:
 {
   # ── Hyprland ──
@@ -101,4 +101,22 @@
 
   # ── Games ──
   programs.steam.enable = true;
+
+  # ── Programs ──
+  home-manager.users.demiurge.home.packages = with pkgs; [
+    caelestia-shell
+    caelestia-cli
+    wl-clipboard # wl-paste, run by Caelestia's execs.lua (clipboard history)
+    cliphist # same
+    glib # gsettings, run by Caelestia's execs.lua (GTK cursor theme and size)
+    btop
+    pwvucontrol
+    gammastep # night light, started by Caelestia's execs.lua
+    trash-cli # trash-empty, run by Caelestia's execs.lua
+    kitty
+    # themes (Papirus comes from gtk.iconTheme above)
+    qtengine
+    darkly
+    hyprmod # hyprland GUI config tool
+  ];
 }

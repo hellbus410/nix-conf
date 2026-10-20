@@ -10,8 +10,15 @@
     ../../modules/audio.nix
     ../../modules/bluetooth.nix
     ../../modules/games.nix
+    ../../modules/cli.nix
+    ../../modules/dev.nix
     ../../modules/desktop.nix
-    ../../modules/packages.nix
+    ../../modules/office.nix
+    ../../modules/media.nix
+    ../../modules/browsers.nix
+    ../../modules/messaging.nix
+    ../../modules/notes.nix
+    ../../modules/ai.nix
   ];
 
   networking.hostName = "bifrost";
