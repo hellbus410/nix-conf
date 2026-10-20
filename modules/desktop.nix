@@ -38,6 +38,7 @@
       roboto 
       open-sans
       lato
+      liberation_ttf
     ];
     fontconfig = {
       defaultFonts = {
