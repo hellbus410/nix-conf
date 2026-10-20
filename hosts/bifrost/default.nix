@@ -13,6 +13,9 @@
     ../../modules/cli.nix
     ../../modules/dev.nix
     ../../modules/desktop.nix
+    ../../modules/input-method.nix
+    ../../modules/1password.nix
+    ../../modules/phone.nix
     ../../modules/office.nix
     ../../modules/media.nix
     ../../modules/browsers.nix

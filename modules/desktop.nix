@@ -28,17 +28,6 @@
       maple-mono.NF
       maple-mono.NF-CN #  fallback for Japanese text (even if it's Chinese)
       nerd-fonts.caskaydia-cove # fallback for the rest
-      # for onlyoffice: fonts .docx/.xlsx/.pptx files ask for, so layouts match Word
-      corefonts # Arial, Times New Roman, Courier New, Verdana, Georgia, Trebuchet MS, Impact 
-      vista-fonts # Calibri, Cambria, Candara, Consolas, Constantia, Corbel
-      paratype-pt-sans # PT Sans/Serif/Mono
-      paratype-pt-serif
-      paratype-pt-mono
-      noto-fonts 
-      roboto 
-      open-sans
-      lato
-      liberation_ttf
     ];
     fontconfig = {
       defaultFonts = {
@@ -49,32 +38,6 @@
       };
     };
     enableDefaultPackages = true;
-  };
-
-  # ── Input method: US / RU / JP ──
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5 = {
-      waylandFrontend = true;
-      addons = with pkgs; [
-        fcitx5-mozc
-        fcitx5-gtk
-      ];
-    };
-  };
-
-  # ── 1Password ── (system-level: setgid CLI wrapper, polkit policy)
-  programs._1password.enable = true;
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = [ "demiurge" ];
-  };
-
-  # ── Phone: Valent (KDE Connect protocol) ── (opens TCP/UDP 1714-1764; uwsm runs its xdg autostart)
-  programs.kdeconnect = {
-    enable = true;
-    package = pkgs.valent;
   };
 
   # ── Services the Caelestia shell reads ──
@@ -98,9 +61,6 @@
 
   # ── Polkit agent ── (the shell has none; a user unit started with graphical-session.target)
   home-manager.users.demiurge.services.hyprpolkitagent.enable = true;
-
-  # ── Games ──
-  programs.steam.enable = true;
 
   # ── Programs ──
   home-manager.users.demiurge.home.packages = with pkgs; [
