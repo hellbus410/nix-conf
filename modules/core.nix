@@ -102,10 +102,10 @@
     usbutils # lsusb, lsusb.py, usb-devices, usbhid-dump, usbreset
   ];
 
-  # ── Home Manager ── (user demiurge, the same on every machine; features add to it)
+  # ── Home Manager ── (user demiurge, the same on every machine; features add to it;
+  # home.stateVersion is per host, like system.stateVersion)
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.demiurge.home.stateVersion = "26.11"; # initial ver
   };
 }
