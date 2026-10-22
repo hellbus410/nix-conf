@@ -52,4 +52,5 @@
 
   system.configurationRevision = self.rev or self.dirtyRev or null;
   system.stateVersion = "26.05"; # initial ver.
+  home-manager.users.demiurge.home.stateVersion = "26.11"; # initial ver.
 }
