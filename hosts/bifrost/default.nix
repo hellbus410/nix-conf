@@ -1,5 +1,5 @@
 # bifrost: i7-9700K, RTX 2080 Ti, 16 GB, 2 TB NVMe.
-{ config, self, ... }:
+{ self, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -22,6 +22,7 @@
     ../../modules/messaging.nix
     ../../modules/notes.nix
     ../../modules/ai.nix
+    ../../modules/nvidia.nix
   ];
 
   networking.hostName = "bifrost";
@@ -47,15 +48,6 @@
     AllowHibernation = "no";
     AllowHybridSleep = "no";
     AllowSuspendThenHibernate = "no";
-  };
-
-  hardware.graphics.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ]; # selects the driver for Wayland too
-  hardware.nvidia = {
-    open = true; # NVIDIA's open kernel modules (Turing and newer); nouveau and nova stay blacklisted
-    modesetting.enable = true; # required by Wayland; already the default
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-    nvidiaSettings = false;
   };
 
   system.configurationRevision = self.rev or self.dirtyRev or null;
