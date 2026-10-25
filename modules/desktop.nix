@@ -20,6 +20,14 @@
     useTextGreeter = true;
     settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
   };
+  environment.persistence."/persist".directories = [
+    {
+      directory = "/var/cache/tuigreet"; # --remember state; must belong to greeter
+      user = "greeter";
+      group = "greeter";
+      mode = "0755";
+    }
+  ];
 
   # ── Fonts ──
   fonts = {
