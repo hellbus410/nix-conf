@@ -1,15 +1,14 @@
-# Root wiped on every boot; what survives lives in /persist.
-{ inputs, lib, ... }:
+# Root wiped on every boot; what survives lives in /persist. Needs btrfs-disk (the partition and @root).
+{ config, lib, utils, ... }:
 let
-  device = "/dev/disk/by-partlabel/disk-main-root"; # disko's label: disk-<disk>-<partition>
-  deviceUnit = "dev-disk-by\\x2dpartlabel-disk\\x2dmain\\x2droot.device"; # systemd-escape -p of the above
+  # The btrfs partition from btrfs-disk.nix: /dev/disk/by-partlabel/disk-main-root
+  device = config.disko.devices.disk.main.content.partitions.root.device;
+  deviceUnit = "${utils.escapeSystemdPath device}.device"; # what systemd-escape -p gives
 
   # false for the first boot after the reinstall; true once the bind mounts are checked.
   rollback.enable = true;
 in
 {
-  imports = [ inputs.impermanence.nixosModules.impermanence ];
-
   # Rollback, as a systemd initrd unit (stage 1 runs systemd by default).
   boot.initrd.systemd.services.rollback = lib.mkIf rollback.enable {
     description = "Move the old btrfs root aside and create an empty one";
@@ -49,20 +48,13 @@ in
   };
 
   # Bind-mounted back from /persist/<same path>; anything not listed is lost at reboot.
+  # These are the base system's; features add their own paths.
   environment.persistence."/persist" = {
+    enable = true; # core.nix imports the module with this off, so features can list paths on any host
     hideMounts = true;
     directories = [
       "/var/lib/nixos" # UID/GID map
       "/var/lib/systemd" # timers, coredumps
-      "/etc/NetworkManager/system-connections"
-      "/var/lib/NetworkManager"
-      "/var/lib/bluetooth"
-      {
-        directory = "/var/cache/tuigreet"; # --remember state; must belong to greeter
-        user = "greeter";
-        group = "greeter";
-        mode = "0755";
-      }
     ];
     files = [
       "/etc/machine-id"

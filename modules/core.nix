@@ -1,7 +1,13 @@
 # What every host needs, servers included; the rest are features a host lists.
-{ inputs, pkgs, ... }:
+{ inputs, lib, pkgs, ... }:
 {
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+    inputs.impermanence.nixosModules.impermanence
+  ];
+
+  # Features list the paths they keep; nothing is bind-mounted unless the impermanence feature turns this on.
+  environment.persistence."/persist".enable = lib.mkDefault false;
 
   # ── Nix ──
   nix.settings = {

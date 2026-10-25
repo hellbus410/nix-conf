@@ -4,7 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/btrfs-disk.nix
-    ./impermanence.nix
+    ../../modules/impermanence.nix
     ../../modules/core.nix
     ../../modules/networkmanager.nix
     ../../modules/audio.nix
