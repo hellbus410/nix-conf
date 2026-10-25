@@ -85,11 +85,6 @@
   programs.mtr.enable = true;
 
   # ── Services ──
-  services.btrfs.autoScrub = {
-    enable = true;
-    interval = "monthly";
-    fileSystems = [ "/" ];
-  };
   services.fwupd.enable = true;
 
   # ── Packages ── (system: only what root and a rescue session need; the user's come from features)

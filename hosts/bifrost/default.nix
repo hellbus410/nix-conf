@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./disko.nix
+    ../../modules/btrfs-disk.nix
     ./impermanence.nix
     ../../modules/core.nix
     ../../modules/networkmanager.nix
@@ -27,6 +27,7 @@
   ];
 
   networking.hostName = "bifrost";
+  disko.devices.disk.main.device = "/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_2TB_S4J4NG0M903142J";
 
   # NVMe dropped off the PCIe bus (controller is down, CSTS=0xffffffff); no NVMe/PCIe power saving.
   boot.kernelParams = [
