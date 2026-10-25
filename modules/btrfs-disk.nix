@@ -1,4 +1,5 @@
 # Disk layout: GPT, 1G ESP, one btrfs with @root (wiped), @nix, @persist, @log, @home, @swap.
+# The host sets the disk: disko.devices.disk.main.device = "/dev/disk/by-id/…";
 { inputs, ... }:
 {
   imports = [ inputs.disko.nixosModules.disko ];
@@ -7,7 +8,6 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_2TB_S4J4NG0M903142J";
 
         content = {
           type = "gpt";
@@ -84,4 +84,10 @@
   # Mounted in the initrd, before the persistence bind mounts need them.
   fileSystems."/persist".neededForBoot = true;
   fileSystems."/var/log".neededForBoot = true;
+
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "monthly";
+    fileSystems = [ "/" ];
+  };
 }
