@@ -13,13 +13,26 @@ let
       halves =
         f:
         lib.optional (nixos ? ${f}) nixos.${f}
-        ++ lib.optional (homeManager ? ${f}) { home-manager.users.demiurge = homeManager.${f}; };
+        ++ lib.optional (homeManager ? ${f}) (
+          { config, ... }:
+          {
+            home-manager.users.${config.user.name} = homeManager.${f};
+          }
+        );
     in
     assert lib.assertMsg (unknown == [ ]) "host ${name}: no feature named ${toString unknown}";
     inputs.nixpkgs.lib.nixosSystem {
       modules = [
         host.module # first, so the host's own list entries come before the features'
         { networking.hostName = name; }
+        # The one login account; a host may rename it. Features read it as config.user.name.
+        {
+          options.user.name = lib.mkOption {
+            type = lib.types.str;
+            default = "demiurge";
+            description = "Name of the main user account, and of its Home Manager configuration.";
+          };
+        }
       ]
       ++ lib.concatMap halves host.features;
     };
