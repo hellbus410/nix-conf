@@ -3,8 +3,8 @@
   flake.modules.nixos.impermanence =
     { config, lib, utils, ... }:
     let
-      # The btrfs partition from btrfs-disk.nix: /dev/disk/by-partlabel/disk-main-root
-      device = config.disko.devices.disk.main.content.partitions.root.device;
+      # The btrfs from btrfs-disk.nix: the partition, or /dev/mapper/cryptroot once LUKS has opened it
+      device = config.btrfs-disk.device;
       deviceUnit = "${utils.escapeSystemdPath device}.device"; # what systemd-escape -p gives
 
       # false for the first boot after the reinstall; true once the bind mounts are checked.
@@ -69,6 +69,6 @@
 
       # /etc/shadow is wiped too, so users are declarative and the hash lives on /persist (never in the public repo).
       users.mutableUsers = false;
-      users.users.demiurge.hashedPasswordFile = "/persist/secrets/demiurge.passwd";
+      users.users.${config.user.name}.hashedPasswordFile = "/persist/secrets/${config.user.name}.passwd";
     };
 }
