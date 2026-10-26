@@ -2,7 +2,10 @@
 { inputs, ... }:
 {
   flake.modules.nixos.core =
-    { lib, pkgs, ... }:
+    { config, lib, pkgs, ... }:
+    let
+      user = config.user.name;
+    in
     {
       imports = [
         inputs.home-manager.nixosModules.home-manager
@@ -27,7 +30,7 @@
       # ── Nix Helper ──
       programs.nh = {
         enable = true;
-        flake = "/home/demiurge/projects/nix-conf"; # where the repo lives on the machine
+        flake = "/home/${user}/projects/nix-conf"; # where the repo lives on the machine
         clean = {
           enable = true; # replaces nix.gc
           extraArgs = "--keep-since 14d --keep 10";
@@ -63,9 +66,9 @@
       };
 
       # ── User ──
-      users.users.demiurge = {
+      users.users.${user} = {
         isNormalUser = true;
-        description = "demiurge";
+        description = user;
         extraGroups = [
           "wheel"
         ];
@@ -128,7 +131,7 @@
         _7zz
       ];
 
-      # ── Home Manager ── (user demiurge, the same on every machine; features add to it;
+      # ── Home Manager ── (the user from user.name, the same on every machine; features add to it;
       # home.stateVersion is per host, like system.stateVersion)
       home-manager = {
         useGlobalPkgs = true;

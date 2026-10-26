@@ -2,7 +2,7 @@
 { inputs, ... }:
 {
   flake.modules.nixos."1password" =
-    { pkgs, ... }:
+    { config, pkgs, ... }:
     let
       # TEMP: GUI from the pinned nixpkgs (see flake.nix); the CLI stays on unstable.
       pinned = import inputs.nixpkgs-1password {
@@ -15,7 +15,7 @@
       programs._1password-gui = {
         enable = true;
         package = pinned._1password-gui;
-        polkitPolicyOwners = [ "demiurge" ];
+        polkitPolicyOwners = [ config.user.name ];
       };
     };
 }
