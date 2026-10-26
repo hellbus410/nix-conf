@@ -12,6 +12,7 @@
     ../../modules/games.nix
     ../../modules/cli.nix
     ../../modules/dev.nix
+    ../../modules/podman.nix
     ../../modules/desktop.nix
     ../../modules/input-method.nix
     ../../modules/1password.nix
