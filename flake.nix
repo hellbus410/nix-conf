@@ -1,5 +1,5 @@
 {
-  description = "initial NixOS configuration for bifrost";
+  description = "NixOS configurations for the homelab, one feature per file";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -35,13 +35,8 @@
     import-tree.url = "github:vic/import-tree";
   };
 
-  # Every .nix file under these folders is a flake-parts module; paths with `/_` are skipped.
-  # The old NixOS modules in modules/*.nix aren't flake-parts modules yet, so only these two
-  # folders are loaded; this becomes ./modules once those are converted.
+  # Every .nix file under ./modules is a flake-parts module; paths with `/_` are skipped.
   outputs =
     inputs@{ flake-parts, import-tree, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } (import-tree [
-      ./modules/flake
-      ./modules/hosts
-    ]);
+    flake-parts.lib.mkFlake { inherit inputs; } (import-tree ./modules);
 }

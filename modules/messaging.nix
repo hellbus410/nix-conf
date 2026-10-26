@@ -1,9 +1,12 @@
 # Chat and mail.
-{ pkgs, ... }:
 {
-  home-manager.users.demiurge.home.packages = with pkgs; [
-    vesktop
-    telegram-desktop
-    protonmail-desktop
-  ];
+  flake.modules.homeManager.messaging =
+    { pkgs, ... }:
+    {
+      home.packages = with pkgs; [
+        vesktop
+        telegram-desktop
+        protonmail-desktop
+      ];
+    };
 }
