@@ -1,8 +1,11 @@
 # AI assistants.
-{ pkgs, ... }:
 {
-  home-manager.users.demiurge.home.packages = with pkgs; [
-    claude-code
-    herdr # TODO: try claude-code using herdr
-  ];
+  flake.modules.homeManager.ai =
+    { pkgs, ... }:
+    {
+      home.packages = with pkgs; [
+        claude-code
+        herdr # TODO: try claude-code using herdr
+      ];
+    };
 }

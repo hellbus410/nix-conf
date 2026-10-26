@@ -1,8 +1,11 @@
 # Note-taking apps.
-{ pkgs, ... }:
 {
-  home-manager.users.demiurge.home.packages = with pkgs; [
-    obsidian
-    zennotes-desktop
-  ];
+  flake.modules.homeManager.notes =
+    { pkgs, ... }:
+    {
+      home.packages = with pkgs; [
+        obsidian
+        zennotes-desktop
+      ];
+    };
 }
