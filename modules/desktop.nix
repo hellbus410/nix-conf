@@ -78,6 +78,8 @@
       # ── Services Caelestia's autostart (hypr/hyprland/execs.lua) expects ──
       services.gnome.gnome-keyring.enable = true; # secrets store for apps (gnome-keyring-daemon)
       services.gnome.gcr-ssh-agent.enable = false; # it takes SSH_AUTH_SOCK; SSH keys come from 1Password's agent
+      # NetworkManager secret agent: asks for a Wi-Fi password when a profile has none or it's wrong (the shell has none)
+      programs.nm-applet.enable = true;
       services.geoclue2.enable = true; # location for gammastep; NixOS runs the geoclue agent as a user unit
 
       # ── Theming ── (Caelestia writes ~/.config/qtengine/config.json; these make it resolvable)
