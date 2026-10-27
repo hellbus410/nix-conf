@@ -7,7 +7,10 @@
       "impermanence"
     ]
     ++ config.roles.laptop
-    ++ [ "nvidia" ];
+    ++ [
+      "nvidia"
+      "clash-verge"
+    ];
 
     module =
       { config, ... }:
