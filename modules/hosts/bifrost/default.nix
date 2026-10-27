@@ -10,6 +10,7 @@
     ++ [
       "nvidia"
       "nas-media"
+      "clash-verge"
     ];
 
     module = {
