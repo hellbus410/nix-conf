@@ -4,6 +4,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
+    # TEMP: 1password-gui 8.12.42 aborts on start (chrome_crashpad_handler not patched for NixOS).
+    # Pinned to the last nixpkgs with 8.12.38; drop once unstable ships a fixed build.
+    nixpkgs-1password.url = "github:nixos/nixpkgs/39ad350a0602fa0a58a544344e3e9187526ea45c";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
