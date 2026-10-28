@@ -96,14 +96,35 @@
       # ── Services ──
       services.fwupd.enable = true;
 
-      # ── Packages ── (system: only what root and a rescue session need; the user's come from features)
+      # ── Packages ──
       environment.systemPackages = with pkgs; [
         git
         neovim
         tmux
         curl
+        wget
+        lsof
         pciutils # lspci, pcilmr, setpci
         usbutils # lsusb, lsusb.py, usb-devices, usbhid-dump, usbreset
+        psmisc # killall, pstree, fuser
+        openssl
+        dnsutils # dig, nslookup
+        nmap
+        whois
+
+      # ── Nice to have ──
+        lazygit
+        eza
+        bat
+        tree
+        ripgrep
+        fd
+        sd
+        file
+        dysk
+        unzip
+        zip
+        _7zz
       ];
 
       # ── Home Manager ── (user demiurge, the same on every machine; features add to it;
