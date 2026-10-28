@@ -20,7 +20,9 @@
       services.greetd = {
         enable = true;
         useTextGreeter = true;
-        settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
+        # Pinned to uwsm: --remember-session stores the session's store path, which every rebuild changes.
+        # F3 still picks another session for one login.
+        settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd 'uwsm start hyprland-uwsm.desktop' --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
       };
       environment.persistence."/persist".directories = [
         {
