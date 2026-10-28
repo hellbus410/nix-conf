@@ -26,6 +26,11 @@
         # nvim-treesitter (main) compiles parsers with these
         tree-sitter
         gcc
+
+        # others
+        jq
+        yq-go
+        entr
       ];
     };
 }

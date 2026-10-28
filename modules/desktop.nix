@@ -104,14 +104,15 @@
         cliphist # same
         glib # gsettings, run by Caelestia's execs.lua (GTK cursor theme and size)
         btop
+        nvtopPackages.full
         pwvucontrol
         gammastep # night light, started by Caelestia's execs.lua
         trash-cli # trash-empty, run by Caelestia's execs.lua
         kitty
+        nautilus
         # themes (Papirus comes from gtk.iconTheme above)
         qtengine
         darkly
-        hyprmod # hyprland GUI config tool
       ];
     };
 }
