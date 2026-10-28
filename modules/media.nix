@@ -9,8 +9,6 @@
         rmpc # music: client for mpd (services.mpd below)
         zathura # pdf, epub, djvu
         spotify
-        spotify-player
-        ncspot
       ];
 
       # music daemon; rmpc is the client. Music dir = XDG_MUSIC_DIR (~/.config/user-dirs.dirs)
