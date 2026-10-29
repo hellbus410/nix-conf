@@ -11,5 +11,15 @@
         secret_key = "$SEARX_SECRET_KEY"; # filled in by envsubst from environmentFile
       };
     };
+
+    # SearXNG checks the network once at start and exits if DNS isn't answering yet; start after the resolver and retry.
+    systemd.services.searx = {
+      wants = [ "adguardhome.service" ];
+      after = [ "adguardhome.service" ];
+      serviceConfig = {
+        Restart = "on-failure";
+        RestartSec = 5;
+      };
+    };
   };
 }
