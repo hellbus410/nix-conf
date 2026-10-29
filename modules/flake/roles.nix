@@ -22,6 +22,7 @@ let
     "notes"
     "ai"
     "adguardhome"
+    "tailscale"
   ];
 in
 {

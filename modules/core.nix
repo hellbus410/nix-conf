@@ -60,7 +60,6 @@
           PermitRootLogin = "no";
         };
       };
-      # services.tailscale.enable = true;
 
       # ── User ──
       users.users.demiurge = {
