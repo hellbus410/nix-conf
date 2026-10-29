@@ -10,12 +10,31 @@
         dns = {
           bind_hosts = [ "127.0.0.1" "::1" ];
           port = 53;
+          # DoH only: plain port 53 out of this LAN is dropped (UDP) or answered with fake IPs (TCP), and so is QUIC.
+          # TODO: switch Quad9 and Yandex to h3:// once UDP 443 leaves the router.
           upstream_dns = [
-            "https://1.1.1.1/dns-query"
-            "https://1.0.0.1/dns-query"
+            "https://dns.quad9.net/dns-query"
+            "[/ru/xn--p1ai/]https://common.dot.dns.yandex.net/dns-query" # .ru and .рф (punycode) to Yandex
             "[/ts.net/]100.100.100.100" # tailnet names to Tailscale's MagicDNS
+            "[//]10.41.13.1" # bare LAN hostnames (helheimr) to the router
+            "[/local/]10.41.13.1" # the domain the router's DHCP hands out
           ];
-          bootstrap_dns = [ "1.1.1.1" ]; # unused with IP upstreams, but the module asserts a list
+          # The same servers by IP, for when a hostname upstream fails
+          fallback_dns = [
+            "https://9.9.9.9/dns-query https://149.112.112.112/dns-query"
+            "[/ru/xn--p1ai/]https://77.88.8.8/dns-query https://77.88.8.1/dns-query"
+          ];
+          # Resolves the upstreams' hostnames; DoH by IP, as plain bootstrap gets no answer here
+          bootstrap_dns = [
+            "https://9.9.9.9/dns-query"
+            "https://149.112.112.112/dns-query"
+            "https://77.88.8.8/dns-query"
+            "https://77.88.8.1/dns-query"
+          ];
+          enable_dnssec = true; # sets the DO bit; Quad9 and Yandex do the validation
+          # Reverse lookups (10.41.13.x → name) to the router as well
+          use_private_ptr_resolvers = true;
+          local_ptr_upstreams = [ "10.41.13.1" ];
         };
         filters = [
           {
