@@ -20,6 +20,7 @@
         ];
         auto-optimise-store = true;
         trusted-users = [ "@wheel" ];
+        use-xdg-base-directories = true; # ~/.nix-profile and ~/.nix-defexpr live under ~/.local/state/nix instead
       };
       nixpkgs.config.allowUnfree = true;
 
