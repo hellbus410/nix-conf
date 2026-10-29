@@ -15,6 +15,7 @@
         tealdeer
         lazyrsync
         pastel # colour picker
+        proton-cli
       ];
 
       # nix-direnv: NixOS-only, so Home Manager's; ~/.zshrc needs `eval "$(direnv hook zsh)"`.
