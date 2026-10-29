@@ -22,6 +22,7 @@ let
     "notes"
     "ai"
     "adguardhome"
+    "searxng"
     "tailscale"
   ];
 in
