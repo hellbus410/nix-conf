@@ -113,6 +113,7 @@
         whois
 
       # ── Nice to have ──
+        delta
         lazygit
         eza
         bat
