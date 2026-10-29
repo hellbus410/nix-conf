@@ -21,6 +21,7 @@ let
     "messaging"
     "notes"
     "ai"
+    "adguardhome"
   ];
 in
 {
