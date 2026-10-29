@@ -1,5 +1,5 @@
 # DNS ad blocking: AdGuard Home on localhost is the system resolver; settings are declared here, the web UI is read-only in effect.
-# Upstream is DNS over HTTPS by IP: the router intercepts plain port 53 (v2rayA, fake IPs) but not TLS.
+# Upstream is DNS over HTTPS: the router intercepts plain port 53 (v2rayA, fake IPs) but not TLS.
 {
   flake.modules.nixos.adguardhome = {
     services.adguardhome = {
@@ -36,12 +36,37 @@
           use_private_ptr_resolvers = true;
           local_ptr_upstreams = [ "10.41.13.1" ];
         };
+        # From AdGuard's HostlistsRegistry; id is the registry's filterId. HaGeZi Pro already folds in the EN, RU, DE, FR and JP lists.
         filters = [
           {
             enabled = true;
             id = 1;
             name = "AdGuard DNS filter";
             url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt";
+          }
+          {
+            enabled = true;
+            id = 48;
+            name = "HaGeZi's Pro Blocklist";
+            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_48.txt";
+          }
+          {
+            enabled = true;
+            id = 44;
+            name = "HaGeZi's Threat Intelligence Feeds";
+            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_44.txt";
+          }
+          {
+            enabled = true;
+            id = 11;
+            name = "Malicious URL Blocklist (URLHaus)";
+            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_11.txt";
+          }
+          {
+            enabled = true;
+            id = 39;
+            name = "Dandelion Sprout's Anti Push Notifications";
+            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_39.txt";
           }
         ];
       };
@@ -50,6 +75,7 @@
     # resolv.conf points at AdGuard Home only; NetworkManager stops writing the DHCP servers into it.
     networking.nameservers = [ "127.0.0.1" "::1" ];
     networking.networkmanager.dns = "none";
+    # TODO: laptop: public Wi-Fi login pages (captive portals) are unreachable, as the network's own DHCP DNS is never asked.
 
     # Query log, stats and downloaded filters; DynamicUser keeps them under /var/lib/private, which must stay 0700.
     environment.persistence."/persist".directories = [
