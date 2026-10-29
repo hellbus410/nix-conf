@@ -36,6 +36,27 @@
           use_private_ptr_resolvers = true;
           local_ptr_upstreams = [ "10.41.13.1" ];
         };
+        # Filters → Blocked services; the ids are AdGuard Home's own service names
+        filtering.blocked_services = {
+          schedule.time_zone = "Local";
+          ids = [
+            "betano"
+            "betfair"
+            "betway"
+            "blaze"
+            "fdj_united"
+            "grindr"
+            "mail_ru"
+            "max"
+            "ok"
+            "onlyfans"
+            "plenty_of_fish"
+            "tiktok"
+            "tinder"
+            "vk"
+            "wizz"
+          ];
+        };
         # From AdGuard's HostlistsRegistry; id is the registry's filterId. HaGeZi Pro already folds in the EN, RU, DE, FR and JP lists.
         filters = [
           {
