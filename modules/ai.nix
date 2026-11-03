@@ -5,7 +5,15 @@
     {
       home.packages = with pkgs; [
         claude-code
-        herdr # TODO: try claude-code using herdr
+        python3Packages.huggingface-hub
+        fabric-ai
       ];
+
+      
+
+      services.ollama = {
+        enable = true;
+        package = pkgs.ollama-cuda;
+      };
     };
 }
