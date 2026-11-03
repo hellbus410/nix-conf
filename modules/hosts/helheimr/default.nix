@@ -9,6 +9,7 @@
     ++ config.roles.laptop
     ++ [
       "nvidia"
+      "nas-media"
       "clash-verge"
     ];
 
