@@ -24,6 +24,12 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    hermes-agent = {
+      url = "github:NousResearch/hermes-agent";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     impermanence = {
       url = "github:nix-community/impermanence";
       # excluding nixpkgs from flake.lock file from impermanence
