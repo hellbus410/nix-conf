@@ -8,8 +8,9 @@
 
       home.packages = with pkgs; [
         claude-code
-        python3Packages.huggingface-hub
         fabric-ai
+        python3Packages.huggingface-hub
+        (llama-cpp.override { cudaSupport = true; })
       ];
 
       programs.hermes-agent = {
@@ -17,9 +18,5 @@
         desktop.enable = true;  # the Electron application and a launcher
       };
 
-      services.ollama = {
-        enable = true;
-        package = pkgs.ollama-cuda;
-      };
     };
 }
