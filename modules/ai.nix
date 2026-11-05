@@ -8,6 +8,7 @@
 
       home.packages = with pkgs; [
         claude-code
+        antigravity-cli
         fabric-ai
         python3Packages.huggingface-hub
         (llama-cpp.override { cudaSupport = true; })
