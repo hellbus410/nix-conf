@@ -3,6 +3,9 @@
 # The host sets the GPUs' bus ids: hardware.nvidia.prime.{amdgpuBusId,nvidiaBusId}.
 {
   flake.modules.nixos.laptop = {
+    # ── nvidia-powerd ──
+    hardware.nvidia.dynamicBoost.enable = true;
+
     # ── PRIME offload ── (with the nvidia feature) the desktop runs on the integrated GPU;
     # `nvidia-offload <program>` runs a program on the NVIDIA one
     hardware.nvidia.prime.offload = {
