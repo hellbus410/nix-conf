@@ -1,5 +1,5 @@
 # Laptop: the ASUS ROG daemons, the NVIDIA GPU as an offload GPU that powers off when idle, screen rotation.
-# Lid and suspend stay at logind's defaults (suspend; ignored when docked).
+# Lid: logind locks the session when undocked and ignores the lid when docked; the compositor turns the panel off.
 # The host sets the GPUs' bus ids: hardware.nvidia.prime.{amdgpuBusId,nvidiaBusId}.
 {
   flake.modules.nixos.laptop = {
@@ -20,10 +20,17 @@
     # ── ASUS ── asusctl: power profiles, charge limit, keyboard light; supergfxctl: GPU modes and the XG Mobile
     services.asusd.enable = true;
     services.supergfxd.enable = true;
-    # asusd writes its own config here (charge limit, profiles); supergfxd's mode resets to Hybrid at boot
     environment.persistence."/persist".directories = [ "/etc/asusd" ];
 
     # ── 2-in-1 ── the accelerometer, for screen rotation (iio-sensor-proxy)
     hardware.sensor.iio.enable = true;
+
+    # ── Lid ── logind.conf(5): "docked" = in a dock or more than one display connected.
+    # "lock" only sends Lock to the sessions
+    # HandleLidSwitchExternalPower is left unset, so AC and battery behave the same.
+    services.logind.settings.Login = {
+      HandleLidSwitch = "lock";
+      HandleLidSwitchDocked = "ignore"; # the default, stated because the bind in Hyprland relies on it
+    };
   };
 }
