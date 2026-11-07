@@ -22,6 +22,17 @@
     services.supergfxd.enable = true;
     environment.persistence."/persist".directories = [ "/etc/asusd" ];
 
+    # rog-control-center autostart as systemd unit
+    systemd.user.services.rog-control-center = {
+      description = "ROG Control Center";
+      wantedBy = [ "graphical-session.target" ];
+      partOf = [ "graphical-session.target" ];
+      serviceConfig = {
+        ExecStart = "/run/current-system/sw/bin/rog-control-center";
+        Restart = "on-failure";
+      };
+    };
+
     # ── 2-in-1 ── the accelerometer, for screen rotation (iio-sensor-proxy)
     hardware.sensor.iio.enable = true;
 
