@@ -81,12 +81,18 @@
       # ── Shell ── (rc files are chezmoi's; bash is always there)
       programs.zsh = {
         enable = true;
-        enableGlobalCompInit = false; # ~/.zshrc runs compinit itself
+        enableGlobalCompInit = false; # ~/.config/zsh/.zshrc runs compinit itself
       };
+      programs.bash.interactiveShellInit = ''
+        if [ -r "$HOME/.config/bash/bashrc" ]; then
+          . "$HOME/.config/bash/bashrc"
+        fi
+      '';
       environment.variables = {
         EDITOR = "nvim";
         VISUAL = "nvim";
         SUDO_EDITOR = "nvim";
+        ZDOTDIR = "$HOME/.config/zsh";
       };
       # The "usual lecture" prints once per user, but its record in /var/db/sudo is wiped every boot
       security.sudo.extraConfig = "Defaults lecture = never";
