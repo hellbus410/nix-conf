@@ -129,6 +129,8 @@
         unzip
         zip
         _7zz
+        unrar
+        ouch
       ];
 
       # ── Home Manager ── (the user from user.name, the same on every machine; features add to it;
