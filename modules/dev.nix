@@ -31,6 +31,34 @@
         jq
         yq-go
         entr
+
+        # devops: kubernetes & gitops
+        kubectl
+        kubernetes-helm
+        kustomize
+        k9s
+        kubectx
+        stern
+        cilium-cli
+        fluxcd
+        argocd
+
+        # devops: iac & automation
+        ansible
+        ansible-lint
+        opentofu
+        terraform
+        terragrunt
+        tflint
+
+        # devops: containers & ci
+        podman-compose
+        skopeo
+        dive
+        act
+
+        # databases
+        postgresql
       ];
     };
 }
