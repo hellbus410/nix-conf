@@ -24,7 +24,7 @@
       programs.hyprland.withUWSM = true; # OPEN: uwsm or plain
       xdg.portal.extraPortals = [
         pkgs.xdg-desktop-portal-gtk # everything Hyprland's portal lacks (settings, …)
-        pkgs.xdg-desktop-portal-termfilechooser # file chooser: yazi in kitty; config in chezmoi
+        pkgs.xdg-desktop-portal-termfilechooser # file chooser: yazi in foot; config in chezmoi
       ];
       xdg.portal.config.hyprland = {
         default = [ "hyprland" "gtk" ]; # same as Hyprland's own hyprland-portals.conf
@@ -113,7 +113,7 @@
         pwvucontrol
         gammastep # night light, started by Caelestia's execs.lua
         trash-cli # trash-empty, run by Caelestia's execs.lua
-        kitty
+        foot
         nautilus
         # themes (Papirus comes from gtk.iconTheme above)
         qtengine
