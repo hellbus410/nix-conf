@@ -31,6 +31,7 @@
         jq
         yq-go
         entr
+        atuin
 
         # devops: kubernetes & gitops
         kubectl
