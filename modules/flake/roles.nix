@@ -24,6 +24,7 @@ let
     "adguardhome"
     "searxng"
     "tailscale"
+    "remote"
   ];
 in
 {
