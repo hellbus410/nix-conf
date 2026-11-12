@@ -25,6 +25,7 @@ let
     "searxng"
     "tailscale"
     "remote"
+    "periphery"
   ];
 in
 {
