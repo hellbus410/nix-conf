@@ -11,6 +11,7 @@
       "nvidia"
       "nas-media"
       "clash-verge"
+      "emacs"
     ];
 
     module =

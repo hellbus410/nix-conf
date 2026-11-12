@@ -23,6 +23,9 @@
         taplo
         vscode-langservers-extracted # vscode-json-language-server
         systemd-lsp
+        pandoc
+        nixfmt
+        shellcheck
         # nvim-treesitter (main) compiles parsers with these
         tree-sitter
         gcc
