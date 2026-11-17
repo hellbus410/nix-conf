@@ -22,8 +22,10 @@
 
     hermes-agent = {
       url = "github:NousResearch/hermes-agent";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
+      # temp disable package follow due to patchelf version revert in nixpkgs
+      # TODO: enable back after fix in hermes-agent
+      # inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.home-manager.follows = "home-manager";
     };
 
     impermanence = {
