@@ -7,7 +7,7 @@
       imports = [ inputs.zen-browser.homeModules.beta ];
 
       home.packages = with pkgs; [
-        # qutebrowser
+        qutebrowser
         brave-origin
       ];
 
