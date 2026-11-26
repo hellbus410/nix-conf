@@ -50,9 +50,11 @@
               "noatime"
             ];
           };
+        }
+        // lib.optionalAttrs (cfg.swapSize != null) {
           "@swap" = {
             mountpoint = "/.swapvol";
-            swap.swapfile.size = "8G";
+            swap.swapfile.size = cfg.swapSize;
           };
         };
       };
@@ -62,6 +64,11 @@
 
       options.btrfs-disk = {
         luks = lib.mkEnableOption "LUKS around the btrfs partition; the passphrase is asked in the initrd";
+        swapSize = lib.mkOption {
+          type = lib.types.nullOr lib.types.str;
+          default = "8G";
+          description = "Size of the @swap swapfile, or null to omit swap (e.g. on Kubernetes nodes).";
+        };
         device = lib.mkOption {
           type = lib.types.str;
           readOnly = true;

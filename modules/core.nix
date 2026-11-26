@@ -42,9 +42,9 @@
       boot.loader.systemd-boot.configurationLimit = 20; # keeps the 1G ESP from filling
       boot.loader.systemd-boot.memtest86.enable = true; # Memtest86+ entry in the boot menu
       boot.loader.efi.canTouchEfiVariables = true;
-      boot.kernelPackages = pkgs.linuxPackages_latest;
+      boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
       boot.tmp.useTmpfs = true;
-      zramSwap.enable = true;
+      zramSwap.enable = lib.mkDefault true;
 
       # ── Locale ──
       time.timeZone = "Europe/Moscow";
