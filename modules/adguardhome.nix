@@ -8,7 +8,10 @@
       settings = {
         http.address = "127.0.0.1:3000";
         dns = {
-          bind_hosts = [ "127.0.0.1" "::1" ];
+          bind_hosts = [
+            "127.0.0.1"
+            "::1"
+          ];
           port = 53;
           # DoH only: plain port 53 out of this LAN is dropped (UDP) or answered with fake IPs (TCP), and so is QUIC.
           # TODO: switch Quad9 and Yandex to h3:// once UDP 443 leaves the router.
@@ -17,7 +20,9 @@
             "[/ru/xn--p1ai/]https://common.dot.dns.yandex.net/dns-query" # .ru and .рф (punycode) to Yandex
             "[/ts.net/]100.100.100.100" # tailnet names to Tailscale's MagicDNS
             "[//]10.41.13.1" # bare LAN hostnames (helheimr) to the router
-            "[/local/]10.41.13.1" # the domain the router's DHCP hands out
+            "[/yggdrasil.home.arpa/]10.41.13.1" # LAN domain on elivagar + split-horizon routes on helgrind
+            "[/home.arpa/]10.41.13.1"
+            "[/local/]10.41.13.1" # legacy router DHCP domain until elivagar replaces ratatoskr
           ];
           # The same servers by IP, for when a hostname upstream fails
           fallback_dns = [
@@ -94,7 +99,10 @@
     };
 
     # resolv.conf points at AdGuard Home only; NetworkManager stops writing the DHCP servers into it.
-    networking.nameservers = [ "127.0.0.1" "::1" ];
+    networking.nameservers = [
+      "127.0.0.1"
+      "::1"
+    ];
     networking.networkmanager.dns = "none";
     # TODO: laptop: public Wi-Fi login pages (captive portals) are unreachable, as the network's own DHCP DNS is never asked.
 
