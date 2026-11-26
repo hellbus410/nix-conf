@@ -5,7 +5,14 @@
     fileSystems."/mnt/nas-media" = {
       device = "10.41.13.6:/media";
       fsType = "nfs";
-      options = [ "_netdev" "nofail" "x-systemd.mount-timeout=10s" "nfsvers=4" ];
+      options = [
+        "_netdev"
+        "nofail"
+        "x-systemd.automount"
+        "x-systemd.idle-timeout=600"
+        "x-systemd.mount-timeout=10s"
+        "nfsvers=4"
+      ];
     };
   };
 }
