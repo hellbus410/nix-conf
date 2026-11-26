@@ -2,17 +2,9 @@
 { config, inputs, ... }:
 {
   hosts.helheimr = {
-    features = [
-      "btrfs-disk"
-      "impermanence"
-    ]
-    ++ config.roles.laptop
-    ++ [
+    features = config.roles.laptop ++ [
       "nvidia"
       "flowX13"
-      "nas-media"
-      "clash-verge"
-      "emacs"
     ];
 
     module =
