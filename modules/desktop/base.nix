@@ -12,6 +12,7 @@
       options.desktop.shell = lib.mkOption {
         type = lib.types.enum [
           "caelestia"
+          "noctalia"
         ];
         default = "caelestia";
         description = "Wayland desktop shell to run alongside Hyprland.";
