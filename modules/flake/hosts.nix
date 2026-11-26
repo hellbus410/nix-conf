@@ -1,7 +1,12 @@
 # mkHost: every `hosts.<name>` becomes `nixosConfigurations.<name>`. A feature name brings in
 # `flake.modules.nixos.<name>` for the system and `flake.modules.homeManager.<name>` for the user,
 # whichever of the two the feature has; a name with neither stops the evaluation.
-{ config, inputs, lib, ... }:
+{
+  config,
+  inputs,
+  lib,
+  ...
+}:
 let
   inherit (config.flake.modules) nixos homeManager;
 

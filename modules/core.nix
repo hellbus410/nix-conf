@@ -2,7 +2,12 @@
 { inputs, ... }:
 {
   flake.modules.nixos.core =
-    { config, lib, pkgs, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     let
       user = config.user.name;
     in
@@ -60,7 +65,7 @@
         enable = true;
         openFirewall = true;
         settings = {
-          PasswordAuthentication = false; 
+          PasswordAuthentication = false;
           KbdInteractiveAuthentication = false;
           PermitRootLogin = "no";
         };

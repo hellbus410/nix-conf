@@ -27,7 +27,10 @@
         pkgs.xdg-desktop-portal-termfilechooser # file chooser: yazi in foot; config in chezmoi
       ];
       xdg.portal.config.hyprland = {
-        default = [ "hyprland" "gtk" ]; # same as Hyprland's own hyprland-portals.conf
+        default = [
+          "hyprland"
+          "gtk"
+        ]; # same as Hyprland's own hyprland-portals.conf
         "org.freedesktop.impl.portal.FileChooser" = [ "termfilechooser" ];
       };
       environment.sessionVariables.NIXOS_OZONE_WL = "1"; # Electron apps on Wayland
@@ -56,14 +59,26 @@
           (mapleMonoWidth "NR" "sha256-5onLVWs80JD9j9qNbj6UkEaVH8j2e+8UHwldn4ewhv0=") # "Maple Mono NR NF": sans/serif and Caelestia's UI text
           (mapleMonoWidth "SL" "sha256-2G9WORNSQW6Ugm77S+AMQVmKenkDeL3hLBZXzlyoLI4=") # "Maple Mono SL NF": Caelestia's headline
           maple-mono.NF
-          maple-mono.NF-CN #  fallback for Japanese text (even if it's Chinese)
+          maple-mono.NF-CN # fallback for Japanese text (even if it's Chinese)
           nerd-fonts.caskaydia-cove # fallback for the rest
         ];
         fontconfig = {
           defaultFonts = {
-            sansSerif = [ "Maple Mono NR NF" "Maple Mono NF CN" "CaskaydiaCove Nerd Font" ];
-            serif = [ "Maple Mono NR NF" "Maple Mono NF CN" "CaskaydiaCove Nerd Font" ];
-            monospace = [ "Maple Mono NF" "Maple Mono NF CN" "CaskaydiaCove Nerd Font" ];
+            sansSerif = [
+              "Maple Mono NR NF"
+              "Maple Mono NF CN"
+              "CaskaydiaCove Nerd Font"
+            ];
+            serif = [
+              "Maple Mono NR NF"
+              "Maple Mono NF CN"
+              "CaskaydiaCove Nerd Font"
+            ];
+            monospace = [
+              "Maple Mono NF"
+              "Maple Mono NF CN"
+              "CaskaydiaCove Nerd Font"
+            ];
             emoji = [ "OpenMoji Color" ];
           };
         };
