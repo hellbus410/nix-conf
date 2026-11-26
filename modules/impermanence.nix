@@ -1,7 +1,12 @@
 # Root wiped on every boot; what survives lives in /persist. Needs btrfs-disk (the partition and @root).
 {
   flake.modules.nixos.impermanence =
-    { config, lib, utils, ... }:
+    {
+      config,
+      lib,
+      utils,
+      ...
+    }:
     let
       # The btrfs from btrfs-disk.nix: the partition, or /dev/mapper/cryptroot once LUKS has opened it
       device = config.btrfs-disk.device;
