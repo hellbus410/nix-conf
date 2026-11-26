@@ -1,8 +1,8 @@
-# `nix fmt` formats the repository with nixfmt.
+# `nix fmt` formats the repository with nixfmt-tree.
 {
   perSystem =
     { pkgs, ... }:
     {
-      formatter = pkgs.nixfmt;
+      formatter = pkgs.nixfmt-tree;
     };
 }
