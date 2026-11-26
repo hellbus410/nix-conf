@@ -1,16 +1,18 @@
-# Roles: feature lists shared by machines of one kind. A host takes a role and adds its extras;
-# the disk layout is the host's choice, so it is not in a role.
+# Roles: feature lists shared by machines of one kind.
+# Software lives in roles; host files keep only hardware traits (nvidia, flowX13) and machine-specific settings.
 { lib, ... }:
 let
-  workstation = [
+  core = [
     "core"
+    "btrfs-disk"
+    "impermanence"
+    "cli"
+  ];
+
+  desktop = core ++ [
     "networkmanager"
     "audio"
     "bluetooth"
-    "games"
-    "cli"
-    "dev"
-    "podman"
     "desktop"
     "input-method"
     "1password"
@@ -20,13 +22,23 @@ let
     "browsers"
     "messaging"
     "notes"
+    "emacs"
+    "dev"
+    "podman"
     "ai"
-    "adguardhome"
-    "searxng"
-    "tailscale"
+    "games"
     "remote"
     "periphery"
+    "adguardhome"
+    "searxng"
+    "clash-verge"
+    "tailscale"
+    "nas-media"
   ];
+
+  laptop = desktop ++ [ "laptop" ];
+
+  server = core ++ [ "server" ];
 in
 {
   options.roles = lib.mkOption {
@@ -36,7 +48,11 @@ in
   };
 
   config.roles = {
-    inherit workstation;
-    laptop = workstation ++ [ "laptop" ]; # the laptop feature comes with helheimr
+    inherit
+      core
+      desktop
+      laptop
+      server
+      ;
   };
 }

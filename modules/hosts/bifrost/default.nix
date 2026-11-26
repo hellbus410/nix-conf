@@ -2,15 +2,8 @@
 { config, inputs, ... }:
 {
   hosts.bifrost = {
-    features = [
-      "btrfs-disk"
-      "impermanence"
-    ]
-    ++ config.roles.workstation
-    ++ [
+    features = config.roles.desktop ++ [
       "nvidia"
-      "nas-media"
-      "clash-verge"
     ];
 
     module =
@@ -18,7 +11,8 @@
       {
         imports = [ ./_hardware.nix ];
 
-        disko.devices.disk.main.device = "/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_2TB_S4J4NG0M903142J";
+        disko.devices.disk.main.device =
+          "/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_2TB_S4J4NG0M903142J";
 
         # NVMe dropped off the PCIe bus (controller is down, CSTS=0xffffffff); no NVMe/PCIe power saving.
         boot.kernelParams = [
