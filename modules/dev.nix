@@ -31,10 +31,7 @@
         gcc
 
         # others
-        jq
-        yq-go
         entr
-        atuin
 
         # devops: kubernetes & gitops
         kubectl
