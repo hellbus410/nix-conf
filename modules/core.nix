@@ -16,6 +16,7 @@
       environment.persistence."/persist".enable = lib.mkDefault false;
 
       # ── Nix ──
+      nix.registry.nixpkgs.flake = inputs.nixpkgs; # `nix shell/run nixpkgs#…` reuses the locked store path offline
       nix.settings = {
         experimental-features = [
           "nix-command"
