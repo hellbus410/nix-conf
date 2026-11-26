@@ -108,13 +108,14 @@
         wl-clipboard # wl-paste, run by Caelestia's execs.lua (clipboard history)
         cliphist # same
         glib # gsettings, run by Caelestia's execs.lua (GTK cursor theme and size)
-        btop
         nvtopPackages.full
         pwvucontrol
         gammastep # night light, started by Caelestia's execs.lua
         trash-cli # trash-empty, run by Caelestia's execs.lua
         foot
         nautilus
+        pastel # colour picker
+        proton-cli
         # themes (Papirus comes from gtk.iconTheme above)
         qtengine
         darkly

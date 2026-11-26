@@ -7,6 +7,9 @@
         chezmoi
         age
         sops
+        jq
+        yq-go
+        atuin
         yazi
         fzf
         zoxide
@@ -14,8 +17,6 @@
         fastfetch
         tealdeer
         lazyrsync
-        pastel # colour picker
-        proton-cli
       ];
 
       # nix-direnv: NixOS-only, so Home Manager's; ~/.zshrc needs `eval "$(direnv hook zsh)"`.

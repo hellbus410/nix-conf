@@ -121,7 +121,8 @@
         nmap
         whois
 
-      # ── Nice to have ──
+        # ── Nice to have ──
+        btop
         delta
         lazygit
         eza
