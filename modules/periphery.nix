@@ -1,6 +1,6 @@
 {
   flake.modules.nixos.periphery =
-    { config, pkgs, ... }:
+    { config, ... }:
     {
       # Razer mouse: OpenRazer driver and daemon
       hardware.openrazer = {
