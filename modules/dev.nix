@@ -1,4 +1,5 @@
 # Workstation development tools: GitHub CLIs, direnv, and global Doom Emacs language servers/formatters.
+# Project-specific IaC, Kubernetes, and database toolchains live in per-repository flake devShells.
 {
   flake.modules.homeManager.dev =
     { pkgs, ... }:
@@ -6,6 +7,7 @@
       programs.direnv = {
         enable = true;
         nix-direnv.enable = true;
+        silent = true;
       };
 
       home.packages = with pkgs; [
@@ -16,52 +18,28 @@
 
         # doom emacs: global language servers, formatters, and grammar compiler
         nixd
+        nixfmt
         bash-language-server
-        ansible-language-server
+        shellcheck
+        shfmt
         yaml-language-server
         dockerfile-language-server
         docker-compose-language-service
-        helm-ls
-        tofu-ls
         lua-language-server
         marksman
+        pandoc
         taplo
         vscode-langservers-extracted # vscode-json-language-server
-        pandoc
-        nixfmt
-        shellcheck
-        gcc
+        gcc # treesit-auto-install-grammar compiles tree-sitter .so grammars with cc/gcc
 
         # others
         entr
 
-        # devops: kubernetes & gitops
-        kubectl
-        kubernetes-helm
-        kustomize
-        k9s
-        kubectx
-        stern
-        cilium-cli
-        fluxcd
-        argocd
-
-        # devops: iac & automation
-        ansible
-        ansible-lint
-        opentofu
-        terraform
-        terragrunt
-        tflint
-
-        # devops: containers & ci
+        # containers & ci
         podman-compose
         skopeo
         dive
         act
-
-        # databases
-        postgresql
       ];
     };
 }
