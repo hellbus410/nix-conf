@@ -19,11 +19,5 @@
         tealdeer
         lazyrsync
       ];
-
-      # nix-direnv: NixOS-only, so Home Manager's; ~/.zshrc needs `eval "$(direnv hook zsh)"`.
-      programs.direnv = {
-        enable = true;
-        nix-direnv.enable = true;
-      };
     };
 }
