@@ -8,9 +8,10 @@ result-*
 # Ignore NixOS interactive test driver history
 **/.nixos-test-history
 
-# Ignore secrets and passwords
-secrets/
+# Ignore unencrypted secret files (encrypted SOPS YAML in secrets/ is tracked)
 *.passwd
+secrets/**/*.env
+secrets/**/*.txt
 
 # Ignore VM disk images build by `nixos-rebuild build-vm` or `nh os build-vm`
 *.qcow2

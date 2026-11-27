@@ -1,0 +1,15 @@
+keys:
+  - &admin age1hjqgz4h2ey6rzwfrmnxq24y00cj5s83y65hx428vu8qkvzgq059sxx05hc
+  - &helheimr age1l4mw6y7w8dvjuzptafd549cvc8d5pmtkwt78970gdt2dzcrd9sust2erx4
+
+creation_rules:
+  - path_regex: ^secrets/common\.yaml$
+    key_groups:
+      - age:
+          - *admin
+          - *helheimr
+  - path_regex: ^secrets/hosts/helheimr\.yaml$
+    key_groups:
+      - age:
+          - *admin
+          - *helheimr

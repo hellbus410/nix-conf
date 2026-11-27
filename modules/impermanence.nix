@@ -71,9 +71,5 @@
           "/etc/ssh/ssh_host_rsa_key.pub"
         ];
       };
-
-      # /etc/shadow is wiped too, so users are declarative and the hash lives on /persist (never in the public repo).
-      users.mutableUsers = false;
-      users.users.${config.user.name}.hashedPasswordFile = "/persist/secrets/${config.user.name}.passwd";
     };
 }
