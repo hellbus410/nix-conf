@@ -1,0 +1,25 @@
+repos:
+  - repo: local
+    hooks:
+      - id: gitleaks
+        name: Scan staged changes for secrets (gitleaks)
+        language: system
+        pass_filenames: false
+        entry: >-
+          bash -c 'if command -v gitleaks >/dev/null 2>&1; then
+          gitleaks protect --staged --no-banner --redact;
+          else
+          nix shell --inputs-from . nixpkgs#gitleaks -c gitleaks protect --staged --no-banner --redact;
+          fi'
+
+      - id: sops-encrypted
+        name: Verify files under secrets/ are SOPS-encrypted
+        language: system
+        files: ^secrets/
+        entry: >-
+          bash -c 'for f in "$@"; do
+          case "$f" in *.yaml|*.yml) ;; *) echo "ERROR - non-YAML file in secrets/: $f" >&2; exit 1 ;; esac;
+          yq -e ".sops.mac | test(\"^ENC\\\\[AES256_GCM,\")" "$f" >/dev/null &&
+          yq -e "([del(.sops) | .. | select(kind == \"scalar\")] | length > 0) and ([del(.sops) | .. | select(kind == \"scalar\") | test(\"^ENC\\\\[AES256_GCM,\")] | all_c(. == true))" "$f" >/dev/null ||
+          { echo "ERROR - $f contains unencrypted values or missing SOPS MAC" >&2; exit 1; };
+          done' --
