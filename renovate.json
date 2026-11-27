@@ -1,0 +1,38 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":semanticCommits",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "timezone": "Europe/Moscow",
+  "schedule": [
+    "before 9am on monday"
+  ],
+  "nix": {
+    "enabled": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "commitMessageAction": "update",
+    "commitMessageTopic": "flake.lock"
+  },
+  "packageRules": [
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "groupName": "GitHub Actions",
+      "semanticCommitType": "ci",
+      "semanticCommitScope": "actions"
+    },
+    {
+      "matchManagers": [
+        "nix"
+      ],
+      "groupName": "Nix flake inputs",
+      "semanticCommitType": "build",
+      "semanticCommitScope": "flake"
+    }
+  ]
+}
