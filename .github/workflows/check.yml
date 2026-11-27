@@ -29,6 +29,8 @@ jobs:
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@3138316df39ed29be04236d7ffc686fa525866aa
+        with:
+          determinate: false
 
       - name: Cache Nix store
         uses: DeterminateSystems/magic-nix-cache-action@84c0677f58dcedf3b91f8223ce36a9ea5b3c84b7
@@ -44,5 +46,12 @@ jobs:
           .#checks.x86_64-linux.deadnix
           .#checks.x86_64-linux.secrets
 
-      - name: Evaluate flake and all NixOS hosts
+      - name: Instantiate NixOS host derivations
+        run: |
+          for host in $(nix eval --raw .#nixosConfigurations --apply 'attrs: builtins.concatStringsSep " " (builtins.attrNames attrs)'); do
+            echo "Instantiating nixosConfigurations.$host..."
+            nix path-info --derivation ".#nixosConfigurations.$host.config.system.build.toplevel"
+          done
+
+      - name: Evaluate flake outputs
         run: nix flake check --no-build --keep-going
