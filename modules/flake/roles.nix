@@ -6,6 +6,7 @@ let
     "core"
     "btrfs-disk"
     "impermanence"
+    "sops"
     "cli"
   ];
 

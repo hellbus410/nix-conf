@@ -6,6 +6,7 @@
       home.packages = with pkgs; [
         chezmoi
         age
+        ssh-to-age
         sops
         jq
         yq-go
