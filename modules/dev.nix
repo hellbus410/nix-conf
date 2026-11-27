@@ -1,4 +1,4 @@
-# Writing code: GitHub tools, and what Neovim's language support runs.
+# Workstation development tools: GitHub CLIs, direnv, and global Doom Emacs language servers/formatters.
 {
   flake.modules.homeManager.dev =
     { pkgs, ... }:
@@ -14,7 +14,7 @@
         ghgrab
         gh-dash
 
-        # neovim: language servers enabled in ~/.config/nvim/init.lua (skipped there when missing)
+        # doom emacs: global language servers, formatters, and grammar compiler
         nixd
         bash-language-server
         ansible-language-server
@@ -27,12 +27,9 @@
         marksman
         taplo
         vscode-langservers-extracted # vscode-json-language-server
-        systemd-lsp
         pandoc
         nixfmt
         shellcheck
-        # nvim-treesitter (main) compiles parsers with these
-        tree-sitter
         gcc
 
         # others
